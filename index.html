@@ -13,13 +13,10 @@
 		<div class="mdui-row">
 				<div class="mudi-col-xs-2">
 				</div>
-	    	<div class="mdui-textfield mdui-textfield-floating-label mdui-col-xs-8">
-  				<label class="mdui-textfield-label">Google</label>
-  				<input class="mdui-textfield-input" name="search" type="text"/>
+	    	<div class="mdui-textfield mdui-col-xs-8">
+  				<input class="mdui-textfield-input" name="search" type="text" placeholder="Google Search"/>
 				</div>
-				<div class="mdui-col-xs-2">
-					<br>
-					<br>
+				<div class="mdui-col-xs-2" style="margin-top:16px">
 					<select class="mdui-select" id="core" mdui-select>
   					<option value="1">Google</option>
   					<option value="2">Baidu</option>
@@ -32,13 +29,14 @@
   		let eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
   		if (eCode == 13) {
   			let msg = $("input[name=search]").val();
-  			console.log(msg)
   			let link;
   			switch($('#core').val()) {
-  				case 1:
+  				case '1':
   					link = 'https://www.google.com/search?q=' + msg;
-  				case 2: 
-  					link = 'https://www.baidu.com/#ie=UTF-8&wd=' + mdg;
+  					break;
+  				case '2': 
+  					link = 'https://www.baidu.com/#ie=UTF-8&wd=' + msg;
+  					break;
   			}
   			window.location.href = link;
   		} 
