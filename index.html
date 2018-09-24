@@ -11,20 +11,37 @@
 <body>
 	<div class="mdui-container">
 		<div class="mdui-row">
-				<div class="mudi-col-xs-2">
+				<div class="mdui-col-xs-2">
+					<select class="mdui-select" id="core" mdui-select style="margin-top:16px;margin-left: 80px;border-bottom: none">
+  					<option value="1">Google</option>
+  					<option value="2">Baidu</option>
+  					<option value="3">Bing Dict</option>
+					</select>
 				</div>
 	    	<div class="mdui-textfield mdui-col-xs-8">
   				<input class="mdui-textfield-input" name="search" type="text" placeholder="Google Search"/>
 				</div>
-				<div class="mdui-col-xs-2" style="margin-top:16px">
-					<select class="mdui-select" id="core" mdui-select>
-  					<option value="1">Google</option>
-  					<option value="2">Baidu</option>
-					</select>
+				<div class="mudi-col-xs-2">
 				</div>
 		</div>
   </div>
   <script type="text/javascript">
+  	$("#core").change(function(){
+  		let core = $('#core').val();
+  		let input = $("input[name=search]");
+  		switch(core) {
+  			case '1':
+  				input.attr('placeholder',"Google Search");
+  				break;
+  			case '2':
+  				input.attr('placeholder',"Baidu Search");
+  				break;
+  			case '3':
+  				input.attr('placeholder',"Bing Dictionary");
+  				break;
+  		}
+  	});
+
   	$("input[name=search]").keypress(function(e){ 
   		let eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
   		if (eCode == 13) {
@@ -36,6 +53,9 @@
   					break;
   				case '2': 
   					link = 'https://www.baidu.com/#ie=UTF-8&wd=' + msg;
+  					break;
+					case '3': 
+  					link = 'https://cn.bing.com/dict/search?q=' + msg;
   					break;
   			}
   			window.location.href = link;
