@@ -1,0 +1,49 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/mdui.min.css">
+	<script src="js/mdui.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+  <title>index</title>  
+</head>  
+<body>
+	<div class="mdui-container">
+		<div class="mdui-row">
+				<div class="mudi-col-xs-2">
+				</div>
+	    	<div class="mdui-textfield mdui-textfield-floating-label mdui-col-xs-8">
+  				<label class="mdui-textfield-label">Google</label>
+  				<input class="mdui-textfield-input" name="search" type="text"/>
+				</div>
+				<div class="mdui-col-xs-2">
+					<br>
+					<br>
+					<select class="mdui-select" id="core" mdui-select>
+  					<option value="1">Google</option>
+  					<option value="2">Baidu</option>
+					</select>
+				</div>
+		</div>
+  </div>
+  <script type="text/javascript">
+  	$("input[name=search]").keypress(function(e){ 
+  		let eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+  		if (eCode == 13) {
+  			let msg = $("input[name=search]").val();
+  			console.log(msg)
+  			let link;
+  			switch($('#core').val()) {
+  				case 1:
+  					link = 'https://www.google.com/search?q=' + msg;
+  				case 2: 
+  					link = 'https://www.baidu.com/#ie=UTF-8&wd=' + mdg;
+  			}
+  			window.location.href = link;
+  		} 
+  	});
+
+  </script>
+</body>  
+</html>  
